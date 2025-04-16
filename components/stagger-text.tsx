@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { HTMLMotionProps, Transition, motion, useInView } from "motion/react"
+import { HTMLMotionProps, Transition, motion } from "motion/react"
 
 import {
   TransformDirectionType,
@@ -10,11 +10,12 @@ import {
 } from "@/lib/motion"
 import { cn } from "@/lib/utils"
 
-interface WordProps {
+interface WordProps extends React.HTMLAttributes<HTMLSpanElement> {
   word: string
   transition?: Transition
   direction?: TransformDirectionType
 }
+
 const transitionConfig = { ease: easeTransitions["default"], duration: 0.5 }
 function Word({
   word,
@@ -38,34 +39,33 @@ function Word({
     </span>
   )
 }
-
-interface staggerTextProps extends HTMLMotionProps<"div"> {
+interface StaggerTextProps extends HTMLMotionProps<"div"> {
   text: string
   stagger?: number
   transition?: Transition
   direction?: TransformDirectionType
   className?: string
+  as?: keyof JSX.IntrinsicElements
 }
+
 function StaggerText({
   text,
   stagger = 0.05,
   transition,
   direction,
   className,
+  as: Component = "span",
   ...props
-}: staggerTextProps) {
+}: StaggerTextProps) {
   const words = text.split(" ")
-  const ref = React.useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, {
-    once: true,
-    amount: 0.3,
-  })
+
+  const MotionComp = motion<typeof Component>(Component as React.ElementType)
   return (
-    <motion.div
-      ref={ref}
+    <MotionComp
       transition={{ staggerChildren: stagger }}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      whileInView={"visible"}
+      viewport={{ once: true }}
       className={cn("relative", className)}
       {...props}
     >
@@ -75,7 +75,7 @@ function StaggerText({
           {index < words.length - 1 && " "}
         </React.Fragment>
       ))}
-    </motion.div>
+    </MotionComp>
   )
 }
 

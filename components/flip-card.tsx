@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils"
 const TRANSITION_CONFIG = {
   duration: 0.7,
   ease: [0.4, 0.2, 0.2, 1],
-  transition: "0.7s cubic-bezier(0.4, 0.2, 0.2, 1)",
 } as const
 const TRANSFORM_STYLES: React.CSSProperties = {
   transformStyle: "preserve-3d",
