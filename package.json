@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-tooltip": "^1.2.0",
     "@studio-freight/react-lenis": "^0.0.47",
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
@@ -26,6 +27,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-inner-image-zoom": "^3.0.2",
+    "react-zoom-pan-pinch": "^3.7.0",
     "sharp": "^0.33.5",
     "tailwind-merge": "^1.13.2",
     "tailwindcss-animate": "^1.0.6"

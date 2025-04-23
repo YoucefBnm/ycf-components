@@ -71,7 +71,7 @@ export function GalleryCol({
     >
       {imagesUrls.map((imageUrl, index) => (
         <img
-          className="block aspect-video size-full rounded-md object-cover shadow-md"
+          className="block aspect-video size-full object-cover shadow-md"
           src={imageUrl}
           key={index}
         />
