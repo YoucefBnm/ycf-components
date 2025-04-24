@@ -33,7 +33,7 @@ export default function IndexPage() {
     <div className="overflow-hidden">
       <div className="container flex min-h-svh  justify-around px-6 py-12">
         <CardHoverReveal className="w-1/3 rounded-xl">
-          <CardHoverRevealMain className="bg-blue-500">
+          <CardHoverRevealMain>
             <img
               width={1077}
               height={606}
@@ -48,19 +48,17 @@ export default function IndexPage() {
               <h3 className="text-sm text-opacity-60">Services</h3>
               {/* tag */}
               <div className="flex flex-wrap gap-2 ">
-                <div className=" rounded-full bg-[hsl(18,0%,20%)] px-2 py-1 text-[#f3efef]">
+                <div className=" rounded-full bg-zinc-800 px-2 py-1 text-[#f3efef]">
                   <p className=" text-xs leading-normal">Branding</p>
                 </div>
-                <div className=" rounded-full bg-[hsl(18,0%,20%)] px-2 py-1 text-[#f3efef]">
+                <div className=" rounded-full bg-zinc-800 px-2 py-1 text-[#f3efef]">
                   <p className=" text-xs leading-normal">UI UX</p>
                 </div>
               </div>
             </div>
 
             <div className="space-y-2">
-              <h3 className=" text-sm text-opacity-60" style={{ opacity: 0.6 }}>
-                Stack
-              </h3>
+              <h3 className=" text-sm text-opacity-60">Stack</h3>
               {/* tag */}
               <div className="flex flex-wrap gap-2 ">
                 <div className=" rounded-full bg-[hsl(18,56%,32%)] px-2 py-1 text-[#f3efef]">
@@ -73,9 +71,7 @@ export default function IndexPage() {
             </div>
 
             <div className="space-y-2">
-              <h3 className=" text-sm text-opacity-60" style={{ opacity: 0.6 }}>
-                Profile
-              </h3>
+              <h3 className=" text-sm text-opacity-60">Profile</h3>
               {/* tag */}
               <div className="flex flex-wrap gap-2 ">
                 <p className="text-sm text-card">

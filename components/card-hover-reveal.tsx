@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { HTMLMotionProps, motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -49,22 +48,24 @@ const CardHoverReveal = React.forwardRef<
 })
 CardHoverReveal.displayName = "CardHoverReveal"
 
-interface CardHoverRevealMainProps extends HTMLMotionProps<"div"> {
+interface CardHoverRevealMainProps {
   initialScale?: number
   hoverScale?: number
 }
 const CardHoverRevealMain = React.forwardRef<
   HTMLDivElement,
-  CardHoverRevealMainProps
+  React.HTMLAttributes<HTMLDivElement> & CardHoverRevealMainProps
 >(({ className, initialScale = 1, hoverScale = 1.05, ...props }, ref) => {
   const { isHovered } = useCardHoverRevealContext()
   return (
-    <motion.div
+    <div
       ref={ref}
-      className={cn("size-full", className)}
-      initial={{ scale: initialScale }}
-      animate={{ scale: isHovered ? hoverScale : initialScale }}
-      transition={props.transition || { duration: 0.3 }}
+      className={cn("size-full transition-transform duration-300 ", className)}
+      style={
+        isHovered
+          ? { transform: `scale(${hoverScale})` }
+          : { transform: `scale(${initialScale})` }
+      }
       {...props}
     />
   )
@@ -73,19 +74,21 @@ CardHoverRevealMain.displayName = "CardHoverRevealMain"
 
 const CardHoverRevealContent = React.forwardRef<
   HTMLDivElement,
-  CardHoverRevealMainProps
+  React.HTMLAttributes<HTMLDivElement> & CardHoverRevealMainProps
 >(({ className, initialScale = 1, hoverScale = 1.05, ...props }, ref) => {
   const { isHovered } = useCardHoverRevealContext()
   return (
-    <motion.div
+    <div
       ref={ref}
       className={cn(
-        "absolute inset-[auto_1.5rem_1.5rem] p-6 backdrop-blur-sm",
+        "absolute inset-[auto_1.5rem_1.5rem] p-6 backdrop-blur-md transition-all duration-500 ease-in-out",
         className
       )}
-      initial={{ opacity: 0, y: "140%" }}
-      animate={isHovered ? { y: "0%", opacity: 1 } : { y: "140%", opacity: 0 }}
-      transition={{ duration: 0.4, ease: "easeInOut", ...props.transition }}
+      style={
+        isHovered
+          ? { transform: "translateY(0%)", opacity: 1 }
+          : { transform: "translateY(120%)", opacity: 0 }
+      }
       {...props}
     />
   )
