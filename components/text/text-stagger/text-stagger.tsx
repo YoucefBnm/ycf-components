@@ -1,27 +1,32 @@
 "use client"
 
 import * as React from "react"
-import { HTMLMotionProps, Transition, motion } from "motion/react"
+import { HTMLMotionProps, MotionConfig, Transition, motion } from "motion/react"
 
-import {
-  TransformDirectionType,
-  easeTransitions,
-  transformVariants,
-} from "@/lib/motion"
+import { TransformDirectionType, transformVariants } from "@/lib/motion"
 import { cn } from "@/lib/utils"
 
+interface TextStaggerText extends HTMLMotionProps<"div"> {
+  text: string
+  stagger?: number
+  direction?: TransformDirectionType
+  className?: string
+  as?: keyof JSX.IntrinsicElements
+}
 interface WordProps extends React.HTMLAttributes<HTMLSpanElement> {
   word: string
   transition?: Transition
   direction?: TransformDirectionType
 }
+const TRANSITION_CONFIG = {
+  type: "spring",
+  stiffness: 100,
+  damping: 16,
+  mass: 0.75,
+  restDelta: 0.005,
+}
 
-const transitionConfig = { ease: easeTransitions["default"], duration: 0.5 }
-function Word({
-  word,
-  transition = transitionConfig,
-  direction = "bottom",
-}: WordProps) {
+function Word({ word, direction = "bottom" }: WordProps) {
   const characters = word.split("")
   return (
     <span className="inline-block text-nowrap align-top">
@@ -30,7 +35,6 @@ function Word({
           <motion.span
             className="inline-block"
             variants={transformVariants(direction)}
-            transition={transition}
           >
             {char}
           </motion.span>
@@ -39,16 +43,8 @@ function Word({
     </span>
   )
 }
-interface StaggerTextProps extends HTMLMotionProps<"div"> {
-  text: string
-  stagger?: number
-  transition?: Transition
-  direction?: TransformDirectionType
-  className?: string
-  as?: keyof JSX.IntrinsicElements
-}
 
-function StaggerText({
+export function TextStagger({
   text,
   stagger = 0.05,
   transition,
@@ -56,10 +52,12 @@ function StaggerText({
   className,
   as: Component = "span",
   ...props
-}: StaggerTextProps) {
+}: TextStaggerText) {
   const words = text.split(" ")
 
-  const MotionComp = motion<typeof Component>(Component as React.ElementType)
+  const MotionComp = motion.create<typeof Component>(
+    Component as React.ElementType
+  )
   return (
     <MotionComp
       transition={{ staggerChildren: stagger }}
@@ -69,14 +67,15 @@ function StaggerText({
       className={cn("relative", className)}
       {...props}
     >
-      {words.map((word, index) => (
-        <React.Fragment key={index}>
-          <Word transition={transition} direction={direction} word={word} />
-          {index < words.length - 1 && " "}
-        </React.Fragment>
-      ))}
+      <MotionConfig transition={{ TRANSITION_CONFIG }}>
+        {words.map((word, index) => (
+          <React.Fragment key={index}>
+            <Word transition={transition} direction={direction} word={word} />
+            {index < words.length - 1 && " "}
+          </React.Fragment>
+        ))}
+      </MotionConfig>
     </MotionComp>
   )
 }
-
-export { StaggerText }
+TextStagger.displayName = "TextStagger"

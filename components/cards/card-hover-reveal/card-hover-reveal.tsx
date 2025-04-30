@@ -63,8 +63,8 @@ const CardHoverRevealMain = React.forwardRef<
       className={cn("size-full transition-transform duration-300 ", className)}
       style={
         isHovered
-          ? { transform: `scale(${hoverScale})` }
-          : { transform: `scale(${initialScale})` }
+          ? { transform: `scale(${hoverScale})`, ...props.style }
+          : { transform: `scale(${initialScale})`, ...props.style }
       }
       {...props}
     />
@@ -74,20 +74,20 @@ CardHoverRevealMain.displayName = "CardHoverRevealMain"
 
 const CardHoverRevealContent = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & CardHoverRevealMainProps
->(({ className, initialScale = 1, hoverScale = 1.05, ...props }, ref) => {
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
   const { isHovered } = useCardHoverRevealContext()
   return (
     <div
       ref={ref}
       className={cn(
-        "absolute inset-[auto_1.5rem_1.5rem] p-6 backdrop-blur-md transition-all duration-500 ease-in-out",
+        "absolute inset-[auto_1.5rem_1.5rem] p-6 backdrop-blur-lg transition-all duration-500 ease-in-out",
         className
       )}
       style={
         isHovered
-          ? { transform: "translateY(0%)", opacity: 1 }
-          : { transform: "translateY(120%)", opacity: 0 }
+          ? { translate: "0%", opacity: 1, ...props.style }
+          : { translate: "0% 120%", opacity: 0, ...props.style }
       }
       {...props}
     />
