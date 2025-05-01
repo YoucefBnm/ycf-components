@@ -119,7 +119,7 @@ const ContainerScale = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
     const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
     const position = useTransform(scrollYProgress, (pos) =>
-      pos >= 0.6 ? "absolute" : "fixed"
+      pos >= 0.6 || !pos ? "absolute" : "fixed"
     )
     return (
       <motion.div
