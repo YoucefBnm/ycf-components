@@ -39,7 +39,7 @@ function useFlipCardContext() {
   return context
 }
 
-const FlipCard = React.memo(
+const CardFlip = React.memo(
   React.forwardRef<HTMLDivElement, FlipCardProps>(
     (
       {
@@ -98,9 +98,9 @@ const FlipCard = React.memo(
     }
   )
 )
-FlipCard.displayName = "FlipCard"
+CardFlip.displayName = "CardFlip"
 
-const FlipCardFront = React.memo(
+const CardFlipFront = React.memo(
   React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
     ({ className, ...props }, ref) => {
       const { isFlipped, flipDirection } = useFlipCardContext()
@@ -132,9 +132,9 @@ const FlipCardFront = React.memo(
     }
   )
 )
-FlipCardFront.displayName = "FlipCardFront"
+CardFlipFront.displayName = "CardFlipFront"
 
-const FlipCardBack = React.memo(
+const CardFlipBack = React.memo(
   React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
     ({ className, ...props }, ref) => {
       const { isFlipped, flipDirection } = useFlipCardContext()
@@ -163,6 +163,6 @@ const FlipCardBack = React.memo(
     }
   )
 )
-FlipCardBack.displayName = "FlipCardBack"
+CardFlipBack.displayName = "CardFlipBack"
 
-export { FlipCard, FlipCardFront, FlipCardBack }
+export { CardFlip, CardFlipFront, CardFlipBack }

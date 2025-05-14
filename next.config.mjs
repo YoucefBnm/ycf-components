@@ -8,9 +8,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "m.media-amazon.com",
-        port: "",
-        pathname: "/**",
+        hostname: "pbs.twimg.com",
       },
       {
         protocol: "https",
@@ -29,6 +27,13 @@ const nextConfig = {
         hostname: "static.nike.com",
         port: "",
         pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "assets.example.com",
+        port: "",
+        pathname: "/account123/**",
+        search: "",
       },
     ],
   },

@@ -1,7 +1,12 @@
-import { Button } from "../ui/button"
-import { BentoCell, BentoGrid, ContainerScale, ContainerScroll } from "./hero"
+import { Button } from "../../ui/button"
+import {
+  BentoCell,
+  BentoGrid,
+  ContainerScale,
+  ContainerScroll,
+} from "./hero-gallery-scale"
 
-const IMAGES = [
+export const TOKYO_IMAGES = [
   "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=2388&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   "https://images.unsplash.com/photo-1498036882173-b41c28a8ba34?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   "https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?q=80&w=2368&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -9,26 +14,28 @@ const IMAGES = [
   "https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHRva3lvfGVufDB8fDB8fHww",
 ]
 
-const HeroDemo = () => {
+export const HeroGalleryScaleDemo = () => {
   return (
     <ContainerScroll className="h-[350vh] bg-slate-900 text-slate-100">
       <BentoGrid
         variant={"threeCells"}
         className="sticky left-0 top-0 h-svh w-full p-4"
       >
-        {IMAGES.filter((_, index) => index <= 2).map((imageUrl, index) => (
-          <BentoCell
-            key={index}
-            className="overflow-hidden rounded-xl shadow-xl"
-          >
-            <img
-              className="size-full object-cover object-center"
-              width="100%"
-              height="100%"
-              src={imageUrl}
-            />
-          </BentoCell>
-        ))}
+        {TOKYO_IMAGES.filter((_, index) => index <= 2).map(
+          (imageUrl, index) => (
+            <BentoCell
+              key={index}
+              className="overflow-hidden rounded-xl shadow-xl"
+            >
+              <img
+                className="size-full object-cover object-center"
+                width="100%"
+                height="100%"
+                src={imageUrl}
+              />
+            </BentoCell>
+          )
+        )}
       </BentoGrid>
       <ContainerScale className="text-center">
         <h1 className="max-w-xl text-5xl font-bold tracking-tighter ">
@@ -54,26 +61,28 @@ const HeroDemo = () => {
   )
 }
 
-const HeroDemo2 = () => {
+export const HeroGalleryScaleDemo2 = () => {
   return (
     <ContainerScroll className="h-[350vh]">
       <BentoGrid
         variant={"fourCells"}
         className="sticky left-0 top-0 h-svh w-full p-4"
       >
-        {IMAGES.filter((_, index) => index <= 3).map((imageUrl, index) => (
-          <BentoCell
-            key={index}
-            className="overflow-hidden rounded-xl shadow-xl"
-          >
-            <img
-              className="size-full object-cover object-center"
-              width="100%"
-              height="100%"
-              src={imageUrl}
-            />
-          </BentoCell>
-        ))}
+        {TOKYO_IMAGES.filter((_, index) => index <= 3).map(
+          (imageUrl, index) => (
+            <BentoCell
+              key={index}
+              className="overflow-hidden rounded-xl shadow-xl"
+            >
+              <img
+                className="size-full object-cover object-center"
+                width="100%"
+                height="100%"
+                src={imageUrl}
+              />
+            </BentoCell>
+          )
+        )}
       </BentoGrid>
       <ContainerScale className="text-center">
         <h1
@@ -110,11 +119,11 @@ const HeroDemo2 = () => {
   )
 }
 
-const HeroDemo3 = () => {
+export const HeroGalleryScaleDemo3 = () => {
   return (
     <ContainerScroll className="h-[350vh]">
       <BentoGrid className="sticky left-0 top-0 z-0 h-screen w-full p-4">
-        {IMAGES.map((imageUrl, index) => (
+        {TOKYO_IMAGES.map((imageUrl, index) => (
           <BentoCell
             key={index}
             className="overflow-hidden rounded-xl shadow-xl"
@@ -151,4 +160,3 @@ const HeroDemo3 = () => {
     </ContainerScroll>
   )
 }
-export { HeroDemo, HeroDemo2, HeroDemo3 }

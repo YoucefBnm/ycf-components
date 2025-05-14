@@ -3,7 +3,7 @@ export type SiteConfig = typeof siteConfig
 export const siteConfig = {
   name: "YCF DEV",
   description:
-    "COllection of animated components for your next project.",
+    "Collection UI animated components and blocks, utils, hooks, for your next project.",
   mainNav: [
     {
       title: "Home",

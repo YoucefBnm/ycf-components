@@ -17,8 +17,8 @@ const CardCurtainRevealDemo = () => {
       <CardCurtainReveal className="h-[560px] w-96 border border-zinc-100 bg-zinc-950 text-zinc-50 shadow">
         <CardCurtainRevealBody className="">
           <CardCurtainRevealTitle className="text-3xl font-medium tracking-tight">
-            Behind <br />
-            the Curtain
+            Curtain <br />
+            Call
           </CardCurtainRevealTitle>
           <CardCurtainRevealDescription className="my-4 ">
             <p>
@@ -47,7 +47,7 @@ const CardCurtainRevealDemo = () => {
             height="100%"
             alt="Tokyo street"
             className=""
-            src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=2388&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="https://live.staticflickr.com/3275/2485663340_3f64630d18_b.jpg"
           />
         </CardCurtainRevealFooter>
       </CardCurtainReveal>

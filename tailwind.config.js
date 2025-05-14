@@ -4,13 +4,10 @@ const { fontFamily } = require("tailwindcss/defaultTheme")
 module.exports = {
   darkMode: ["class"],
   content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./components/**/**/*.{ts,tsx}", // Add this line for nested components
-    "./premium/**/*.{ts,tsx}", // Add this if you have a premium folder
-    "./premium/**/**/*.{ts,tsx}", // Add this line for nested components
-    "./lib/**/*.{ts,tsx}", // Add this for utility files
-    "./src/**/*.{ts,tsx}", // Add this if you have a src directory
+    "./app/**/*.{js,ts,jsx,tsx,mdx}", // Added mdx
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}", // Added pages
+    "./components/**/*.{js,ts,jsx,tsx,mdx}", // Added mdx
+    "./src/**/*.{js,ts,jsx,tsx,mdx}", // Added mdx
   ],
   theme: {
     container: {
@@ -22,6 +19,19 @@ module.exports = {
     },
     extend: {
       colors: {
+        blue: {
+          50: "#e8e9fe",
+          100: "#b6bbfc",
+          200: "#939afa",
+          300: "#626cf8",
+          400: "#434ff7",
+          500: "#1423f5",
+          600: "#1220df",
+          700: "#0e19ae",
+          800: "#0b1387",
+          900: "#080f67",
+          950: "#030526",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -56,6 +66,9 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      transitionTimingFunction: {
+        custom: "cubic-bezier(.215,.61,.355,1)",
+      },
       borderRadius: {
         lg: `var(--radius)`,
         md: `calc(var(--radius) - 2px)`,
@@ -80,5 +93,8 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/aspect-ratio"),
+  ],
 }
