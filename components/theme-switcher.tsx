@@ -3,7 +3,8 @@
 import * as React from "react";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
-import { Switch } from "@/registry/new-york/radix/switch";
+import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 
 export const ThemeSwitcher = ({ className }: { className?: string }) => {
   const { resolvedTheme: theme, setTheme } = useTheme();
@@ -18,15 +19,22 @@ export const ThemeSwitcher = ({ className }: { className?: string }) => {
     return null;
   }
 
+  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
   return (
-    <div className="flex items-center gap-2">
-      <Switch
-        className={className}
-        leftIcon={<Sun />}
-        rightIcon={<Moon />}
-        checked={theme === "dark"}
-        onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
-      />
-    </div>
+    <Button
+      variant="secondary"
+      size="icon"
+      onClick={toggleTheme}
+      className={cn(
+        "rounded-full cursor-pointer transition-transform hover:scale-105",
+        className
+      )}
+    >
+      {theme === "light" ? (
+        <Sun className="h-5 w-5" />
+      ) : (
+        <Moon className="h-5 w-5" />
+      )}
+    </Button>
   );
 };
