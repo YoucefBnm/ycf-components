@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-stagger-inview",
+  "type": "registry:component",
+  "title": "Text Stagger Inview",
+  "description": "A component that staggers text when it enters the viewport.",
+  "dependencies": [],
+  "registryDependencies": [
+    "text"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/ui/text-stagger-inview.tsx",
+      "content": "\n\nexport function TextStaggerInview() {\n  return (<div >textstagger</div>)\n}",
+      "type": "registry:component"
+    }
+  ]
+}
