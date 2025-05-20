@@ -29,11 +29,12 @@ export const ThemeSwitcher = ({ className }: { className?: string }) => {
         "rounded-full cursor-pointer transition-transform hover:scale-105",
         className
       )}
+      aria-label="toggle theme"
     >
       {theme === "light" ? (
-        <Sun className="h-5 w-5" />
+        <Sun className="size-4" />
       ) : (
-        <Moon className="h-5 w-5" />
+        <Moon className="size-4" />
       )}
     </Button>
   );

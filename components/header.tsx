@@ -7,6 +7,9 @@ import { ThemeSwitcher } from "./theme-switcher";
 import { useAnimationVariants } from "@/registry/new-york/hooks/use-animation-variants";
 import { headerVariants, logoVariants } from "@/lib/variants";
 import { SPRING_TRANSITION_CONFIG } from "@/registry/new-york/utils/transitions";
+import XIcon from "./icons/x-icon";
+import TwentyFirstIcon from "./icons/21st-icon";
+import GithubIcon from "./icons/github-icon";
 
 export const Header = ({ transition }: { transition: boolean }) => {
   const animationVariants = useAnimationVariants();
@@ -36,7 +39,32 @@ export const Header = ({ transition }: { transition: boolean }) => {
         variants={animationVariants}
         initial="hidden"
         animate={transition ? "visible" : "hidden"}
+        className="flex items-center gap-x-2"
       >
+        <a
+          href="https://github.com/YoucefBnm/"
+          rel="noreferrer noopener"
+          target="_blank"
+          className="size-8 bg-secondary text-black inline-flex items-center justify-center rounded-full [&_svg]:size-4 transition-transform hover:scale-105"
+        >
+          <GithubIcon />
+        </a>
+        <a
+          href="https://x.com/lbnm_yussef"
+          rel="noreferrer noopener"
+          target="_blank"
+          className="size-8 bg-secondary text-black inline-flex items-center justify-center rounded-full [&_svg]:size-4 transition-transform hover:scale-105"
+        >
+          <XIcon />
+        </a>
+        <a
+          href="https://x.com/lbnm_yussef"
+          rel="noreferrer noopener"
+          target="_blank"
+          className="size-8 bg-secondary text-black inline-flex items-center justify-center rounded-full [&_svg]:size-4 transition-transform hover:scale-105"
+        >
+          <TwentyFirstIcon />
+        </a>
         <ThemeSwitcher className="mr-10" />
       </motion.div>
     </motion.div>

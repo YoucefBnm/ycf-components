@@ -5,15 +5,18 @@ import { gsapEasings } from "@/registry/new-york/utils/transitions";
 import { cn } from "@/lib/utils";
 import { motion, type SVGMotionProps } from "motion/react";
 
-export const Logo = ({ className, ...props }: SVGMotionProps<SVGSVGElement>) => {
+export const Logo = ({
+  className,
+  ...props
+}: SVGMotionProps<SVGSVGElement>) => {
   const animationVariants = useAnimationVariants("z");
   return (
     <>
       <motion.svg
-        width="180" 
+        width="180"
         height="36"
         xmlns="http://www.w3.org/2000/svg"
-        className={cn("overflow-hidden", className)}
+        className={cn("overflow-hidden dark:text-white text-black", className)}
         viewBox="0 0 180 36"
         fill="none"
         initial={"hidden"}
