@@ -9,7 +9,6 @@ import {
 } from "../hooks/use-animation-variants";
 import { gsapEasings } from "../utils/transitions";
 import { setStagger } from "../utils/set-stagger";
-import { text } from "stream/consumers";
 
 interface TextStaggerInviewProps extends MotionProps {
   text: string;
@@ -27,7 +26,7 @@ interface TransitionConfigProps {
   staggerDirection?: keyof typeof setStagger | "start";
   stagger?: number;
 }
-const TRANSITION_CONFIG = ({
+const transitionConfig = ({
   index,
   itemsLength,
   ease = "power1.out",
@@ -74,13 +73,15 @@ export const TextStaggerInview = React.forwardRef<
         {characters.map((char, index) => (
           <MotionConfig
             key={`${char}-${index}`}
-            transition={TRANSITION_CONFIG({
-              index,
-              itemsLength: characters.length,
-              ease,
-              stagger,
-              staggerDirection,
-            })}
+            transition={
+              transitionConfig({
+                index,
+                itemsLength: characters.length,
+                ease,
+                stagger,
+                staggerDirection,
+              }) || transition
+            }
           >
             <motion.span className="inline-block" variants={animationVariants}>
               {char}

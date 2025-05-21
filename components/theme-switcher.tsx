@@ -22,7 +22,7 @@ export const ThemeSwitcher = ({ className }: { className?: string }) => {
   const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
   return (
     <Button
-      variant="secondary"
+      variant="ghost"
       size="icon"
       onClick={toggleTheme}
       className={cn(
@@ -31,11 +31,7 @@ export const ThemeSwitcher = ({ className }: { className?: string }) => {
       )}
       aria-label="toggle theme"
     >
-      {theme === "light" ? (
-        <Sun className="size-4" />
-      ) : (
-        <Moon className="size-4" />
-      )}
+      {theme === "light" ? <Sun /> : <Moon />}
     </Button>
   );
 };

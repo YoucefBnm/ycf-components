@@ -1,3 +1,5 @@
+import { Variants } from "motion/react";
+
 export const headerVariants = {
   center: {
     top: 0,
@@ -15,17 +17,16 @@ export const headerVariants = {
   },
 };
 
-export const logoVariants = {
+export const logoVariants: Variants = {
   center: {
-    top: "50%",
-    left: "50%",
-    x: "-50%",
-    y: "-50%",
+    position: "fixed",
+    top: 0,
+    width: "100vw",
+    height: "100vh",
   },
   topLeft: {
-    top: 20,
-    left: 40,
-    x: 0,
-    y: 0,
+    position: "relative",
+    width: "auto",
+    height: "auto",
   },
 };

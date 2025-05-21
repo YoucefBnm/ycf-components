@@ -1,6 +1,7 @@
 "use client";
 
 import { Header } from "@/components/header";
+import { Hero } from "@/components/hero";
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
@@ -20,6 +21,7 @@ export default function HomePage() {
   return (
     <main className={cn("relative h-dvh", !isLoaded && "overflow-y-hidden")}>
       <Header transition={transition} />
+      <Hero transition={transition} />
     </main>
   );
 }
